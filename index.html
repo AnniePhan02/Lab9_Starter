@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "ba465e59b26346709c7a4571a30415ae"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+                        
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,8 +155,7 @@
     
     let consoleDirxmlBtn = errorBtns[7];
     consoleDirxmlBtn.addEventListener('click', () => {
-      let xmlStudent = '<person><name>Annie</name><age>20</age></person>';
-      console.dirxml(xmlStudent);
+      console.dirxml(document.querySelector('#error-btns button'));
     });
 
     let consoleGroupStartBtn = errorBtns[8];
@@ -216,10 +223,34 @@
       } finally {
         throw new Error('Global error thrown message');
       }
-
-
-      // throw new Error('Global error thrown message');
+      throw new Error('Global error 2 thrown');
     });
+
+       
+
+    // Step 4
+    class CustomError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = 'MyCustomError';
+      }
+    }
+
+    try {
+      throw new CustomError('Throw my custom error');
+    } catch (error) {
+        console.error('My custom error was thrown');
+        console.error('Custom error name:', error.name);
+        console.error('Custom error message:', error.message);
+    }
+
+    TrackJS.track('Testing TrackJS!');
+                        
+
+    window.addEventListener('error', () => {
+      console.error('Syntax errror');
+    });
+    
 
     
 
