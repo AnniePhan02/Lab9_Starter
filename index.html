@@ -199,7 +199,26 @@
 
     let consoleGlobalBtn = errorBtns[14];
     consoleGlobalBtn.addEventListener('click', () => {
-      throw new Error('Global error thrown message');
+      try {
+        function variableAccess() {
+          let i;
+          for (i = 0; i < 5; i++) {
+            i += 1;
+          }
+          i *= 2; 
+          if (i > 0) {
+            throw new Error('Demo: Element out of scope');
+          }
+        }
+        variableAccess();
+      } catch (error) {
+        console.error('Error happened because:', error);
+      } finally {
+        throw new Error('Global error thrown message');
+      }
+
+
+      // throw new Error('Global error thrown message');
     });
 
     
