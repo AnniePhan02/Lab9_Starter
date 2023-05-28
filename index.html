@@ -102,6 +102,110 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    let consoleLogBtn = errorBtns[0];
+    consoleLogBtn.addEventListener('click', () => {
+      console.log('Console log button ');
+    });
+
+    let consoleErrorBtn = errorBtns[1];
+    consoleErrorBtn.addEventListener('click', () => {
+      console.error('Console error button ');
+    });
+
+    let consoleCountBtn = errorBtns[2];
+    consoleCountBtn.addEventListener('click', ()=> {
+      console.count('Console count button ');
+    });
+
+    let consoleWarnBtn = errorBtns[3];
+    consoleWarnBtn.addEventListener('click', () => {
+      console.warn('Console warn button');
+    });
+
+    let consoleAssertBtn = errorBtns[4];
+    consoleAssertBtn.addEventListener('click', () => {
+      let number = 2
+      let errorMsg = 'Incorrect assertion'
+      console.assert(number == 3, {number, errorMsg});
+    });
+
+    let consoleClearBtn = errorBtns[5];
+    consoleClearBtn.addEventListener('click', () => {
+      console.clear();
+    });
+
+    let consoleDirBtn = errorBtns[6];
+    consoleDirBtn.addEventListener('click', () => {
+      let student = {
+        name: 'Annie',
+        PID: 'A16865169',
+        age: 20,
+      }
+      console.dir(student);
+    });
+    
+    let consoleDirxmlBtn = errorBtns[7];
+    consoleDirxmlBtn.addEventListener('click', () => {
+      let xmlStudent = '<person><name>Annie</name><age>20</age></person>';
+      console.dirxml(xmlStudent);
+    });
+
+    let consoleGroupStartBtn = errorBtns[8];
+    consoleGroupStartBtn.addEventListener('click', () => {
+      console.log("This is the group's start ");
+      console.group();
+      console.log('Level 2');
+      console.log('More of Level 2');
+    });
+
+    let consoleGroupEndBtn = errorBtns[9];
+    consoleGroupEndBtn.addEventListener('click', () => {
+      console.log("Another final message");
+      console.groupEnd();
+      console.log("Back to main level");
+    });
+
+    let consoleTableBtn = errorBtns[10];
+    consoleTableBtn.addEventListener('click', () => {
+      const names = [
+        ["Annie", "Phan"],
+        ["CSE", "110"],
+        ["UC", "San Diego"],
+      ];
+      console.table(names);
+    });
+
+    let consoleStartTimeBtn = errorBtns[11];
+    consoleStartTimeBtn.addEventListener('click', () => {
+      console.time();
+    });
+
+    let consoleEndTimeBtn = errorBtns[12];
+    consoleEndTimeBtn.addEventListener('click', () => {
+      console.timeEnd();
+    });
+
+    let consoleTraceBtn = errorBtns[13];
+    consoleTraceBtn.addEventListener('click', () => {
+      function foo() {
+        function bar() {
+          console.trace();
+        }
+        bar();
+      }
+      foo();
+    });
+
+    let consoleGlobalBtn = errorBtns[14];
+    consoleGlobalBtn.addEventListener('click', () => {
+      throw new Error('Global error thrown message');
+    });
+
+    
+
+
+
   </script>
 </body>
 
