@@ -103,7 +103,17 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      // output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+
+      try {
+        if (isNaN(firstNum) || isNaN(secondNum)) {
+          throw new Error('An invalid input has occured');
+          invalid.throw() // throw an error for try-catch block
+        }
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (error) {
+        console.error("raising my concerns that " + error);
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -111,6 +121,7 @@
     // Start your code here
     // You may move this JS to another file if you wish
 
+    // STEP 2
     let consoleLogBtn = errorBtns[0];
     consoleLogBtn.addEventListener('click', () => {
       console.log('Console log button ');
@@ -206,24 +217,8 @@
 
     let consoleGlobalBtn = errorBtns[14];
     consoleGlobalBtn.addEventListener('click', () => {
-      try {
-        function variableAccess() {
-          let i;
-          for (i = 0; i < 5; i++) {
-            i += 1;
-          }
-          i *= 2; 
-          if (i > 0) {
-            throw new Error('Demo: Element out of scope');
-          }
-        }
-        variableAccess();
-      } catch (error) {
-        console.error('Error happened because:', error);
-      } finally {
-        throw new Error('Global error thrown message');
-      }
-      throw new Error('Global error 2 thrown');
+      // trigger a global erroor
+      triggerError.throw()
     });
 
        
@@ -236,6 +231,7 @@
       }
     }
 
+    // STEP 3/4
     try {
       throw new CustomError('Throw my custom error');
     } catch (error) {
@@ -244,16 +240,16 @@
         console.error('Custom error message:', error.message);
     }
 
+
+
+    // Step 5
     TrackJS.track('Testing TrackJS!');
                         
 
     window.addEventListener('error', () => {
-      console.error('Syntax errror');
+      console.error('Sadly a Global error occured my friend :(');
     });
     
-
-    
-
 
 
   </script>
